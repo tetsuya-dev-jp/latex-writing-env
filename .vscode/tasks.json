@@ -1,6 +1,27 @@
 {
   "version": "2.0.0",
+  "inputs": [
+    {
+      "id": "latexTemplate",
+      "type": "pickString",
+      "description": "Choose a LaTeX template",
+      "options": [
+        "paper"
+      ],
+      "default": "paper"
+    },
+    {
+      "id": "latexDocumentName",
+      "type": "promptString",
+      "description": "Enter the new document directory name"
+    }
+  ],
   "tasks": [
+    {
+      "label": "Create new document",
+      "type": "shell",
+      "command": "make new TEMPLATE='${input:latexTemplate}' NAME='${input:latexDocumentName}'"
+    },
     {
       "label": "Build current document",
       "type": "shell",
