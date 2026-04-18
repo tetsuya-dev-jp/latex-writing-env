@@ -27,8 +27,8 @@ done
 
 [ -f "$doc_dir/document.json" ] || die "document.json not found"
 
-root_relative="$(sed -n 's/.*"root"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' "$doc_dir/document.json")"
-output_relative="$(sed -n 's/.*"output"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' "$doc_dir/document.json")"
+root_relative="$(json_string_field "$doc_dir/document.json" root)"
+output_relative="$(json_string_field "$doc_dir/document.json" output)"
 
 [ -n "$root_relative" ] || die "root is missing in document.json"
 [ -n "$output_relative" ] || die "output is missing in document.json"

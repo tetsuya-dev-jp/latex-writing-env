@@ -39,6 +39,16 @@ make clean FILE=documents/example-paper/thesis.tex
 ## 新しい文書を追加する
 
 1. `documents/` 配下に新しいディレクトリを作ります。
-2. `document.json` に `root` と `output` を書きます。
+2. `document.json` に `root` と `output` を書き、必要なら `bib` に文献ファイル配列を書きます。
 3. ルート `.tex` と必要な章ファイルを配置します。
 4. `make build FILE=...` で確認します。
+
+`document.json` の例:
+
+```json
+{
+  "root": "thesis.tex",
+  "output": "thesis.pdf",
+  "bib": ["refs.bib"]
+}
+```

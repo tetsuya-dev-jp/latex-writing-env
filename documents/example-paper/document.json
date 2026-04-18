@@ -1,5 +1,7 @@
 {
   "root": "thesis.tex",
   "output": "thesis.pdf",
-  "bib": true
+  "bib": [
+    "refs.bib"
+  ]
 }
