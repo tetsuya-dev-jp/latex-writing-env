@@ -1,0 +1,35 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build current document",
+      "type": "shell",
+      "command": "make build FILE='${file}'"
+    },
+    {
+      "label": "Watch current document",
+      "type": "shell",
+      "command": "make watch FILE='${file}'"
+    },
+    {
+      "label": "Lint current document",
+      "type": "shell",
+      "command": "make lint FILE='${file}'"
+    },
+    {
+      "label": "Format current document",
+      "type": "shell",
+      "command": "make format FILE='${file}'"
+    },
+    {
+      "label": "Clean current document",
+      "type": "shell",
+      "command": "make clean FILE='${file}'"
+    },
+    {
+      "label": "Run doctor",
+      "type": "shell",
+      "command": "make doctor"
+    }
+  ]
+}

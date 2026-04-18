@@ -1,0 +1,50 @@
+{
+  "latex-workshop.latex.autoBuild.run": "never",
+  "latex-workshop.docker.enabled": false,
+  "latex-workshop.latex.tools": [
+    {
+      "name": "make",
+      "command": "make",
+      "args": [
+        "-C",
+        "../..",
+        "build",
+        "FILE=%DOC%.tex"
+      ]
+    }
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "make build",
+      "tools": [
+        "make"
+      ]
+    }
+  ],
+  "latex-workshop.latex.recipe.default": "first",
+  "latex-workshop.latex.clean.method": "command",
+  "latex-workshop.latex.clean.command": "make",
+  "latex-workshop.latex.clean.args": [
+    "-C",
+    "../..",
+    "clean",
+    "FILE=%DOC%.tex"
+  ],
+  "latex-workshop.view.pdf.viewer": "tab",
+  "editor.formatOnSave": false,
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "match": "\\.tex$",
+        "cmd": "make format FILE='${file}'"
+      },
+      {
+        "match": "\\.tex$",
+        "cmd": "make build FILE='${file}'"
+      }
+    ]
+  },
+  "files.associations": {
+    "*.tex": "latex"
+  }
+}

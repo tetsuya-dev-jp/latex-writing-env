@@ -1,0 +1,12 @@
+/build/*
+!/build/.gitkeep
+*.aux
+*.log
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.dvi
+*.bbl
+*.blg
+*.toc
+*.out

@@ -1,0 +1,5 @@
+defaultIndent: '  '
+removeTrailingWhitespace:
+  beforeProcessing: 1
+modifyLineBreaks:
+  preserveBlankLines: 1
