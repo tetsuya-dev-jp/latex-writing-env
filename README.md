@@ -50,6 +50,8 @@ make new TEMPLATE=paper NAME=my-paper
 
 現在選べるテンプレートは `paper` のみです。今後 `templates/` 配下にテンプレートを追加すれば、同じ導線で選べるようにできます。
 
+生成された PDF は `build/documents/<document-name>/` 配下に出力されます。
+
 ## 新しいテンプレートを作成する
 
 1. `templates/` 配下に新しいテンプレートディレクトリを作ります。

@@ -1,6 +1,7 @@
 {
   "latex-workshop.latex.autoBuild.run": "never",
   "latex-workshop.docker.enabled": false,
+  "latex-workshop.latex.outDir": "%WORKSPACE_FOLDER%/build/%RELATIVE_DIR%",
   "latex-workshop.latex.tools": [
     {
       "name": "make",
