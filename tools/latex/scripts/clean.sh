@@ -14,7 +14,8 @@ fi
 
 eval "$(bash "$SCRIPT_DIR/resolve-root.sh" "$1")"
 
-build_dir="$WORKSPACE_DIR/build/$DOC_DIR"
+doc_name="$(basename "$DOC_DIR")"
+build_dir="$WORKSPACE_DIR/build/$doc_name"
 
 [ -d "$build_dir" ] || exit 0
 

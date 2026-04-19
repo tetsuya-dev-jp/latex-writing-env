@@ -8,7 +8,8 @@ source "$SCRIPT_DIR/common.sh"
 require_file_arg "$@"
 eval "$(bash "$SCRIPT_DIR/resolve-root.sh" "$1")"
 
-out_dir_relative="build/$DOC_DIR"
+doc_name="$(basename "$DOC_DIR")"
+out_dir_relative="build/$doc_name"
 out_dir_absolute="$WORKSPACE_DIR/$out_dir_relative"
 
 mkdir -p "$out_dir_absolute"
