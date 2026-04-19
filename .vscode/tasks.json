@@ -1,27 +1,10 @@
 {
   "version": "2.0.0",
-  "inputs": [
-    {
-      "id": "latexDocumentName",
-      "type": "promptString",
-      "description": "Enter the new document path under documents/"
-    }
-  ],
   "tasks": [
-    {
-      "label": "Create new document",
-      "type": "shell",
-      "command": "make new NAME='${input:latexDocumentName}'"
-    },
     {
       "label": "Build current document",
       "type": "shell",
       "command": "make build FILE='${file}'"
-    },
-    {
-      "label": "Watch current document",
-      "type": "shell",
-      "command": "make watch FILE='${file}'"
     },
     {
       "label": "Lint current document",
