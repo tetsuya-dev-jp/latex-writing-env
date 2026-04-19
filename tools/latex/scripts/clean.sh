@@ -8,7 +8,7 @@ source "$SCRIPT_DIR/common.sh"
 if [ "$#" -lt 1 ] || [ -z "${1:-}" ]; then
   build_dir="$WORKSPACE_DIR/build"
   [ -d "$build_dir" ] || exit 0
-  find "$build_dir" -type f ! -name '*.pdf' ! -name '.gitkeep' -delete
+  find "$build_dir" -type f ! -name '.gitkeep' -delete
   exit 0
 fi
 
@@ -18,4 +18,4 @@ build_dir="$WORKSPACE_DIR/build/$DOC_DIR"
 
 [ -d "$build_dir" ] || exit 0
 
-find "$build_dir" -type f ! -name '*.pdf' ! -name '.gitkeep' -delete
+find "$build_dir" -type f ! -name '.gitkeep' -delete
