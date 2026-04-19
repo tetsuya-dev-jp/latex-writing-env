@@ -19,7 +19,6 @@ make init
 ## 主要コマンド
 
 ```bash
-make doctor
 make build FILE=documents/example-paper/main.tex
 make format FILE=documents/example-paper/main.tex
 make clean
