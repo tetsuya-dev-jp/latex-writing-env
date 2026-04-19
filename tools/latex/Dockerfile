@@ -19,6 +19,7 @@ RUN apt-get update \
         texlive-latex-extra \
         texlive-latex-recommended \
         texlive-pictures \
+    && kanji-config-updmap-sys --jis2004 haranoaji \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /workspace
