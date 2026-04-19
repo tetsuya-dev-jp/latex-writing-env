@@ -34,6 +34,19 @@ workspace_relative() {
   esac
 }
 
+document_build_dir() {
+  local doc_dir_relative="$1"
+
+  case "$doc_dir_relative" in
+    documents/*)
+      printf 'build/%s' "${doc_dir_relative#documents/}"
+      ;;
+    *)
+      die "document path must be inside documents/: $doc_dir_relative"
+      ;;
+  esac
+}
+
 docker_run() {
   docker run --rm \
     --user "$(id -u):$(id -g)" \

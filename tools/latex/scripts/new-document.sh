@@ -10,8 +10,11 @@ document_name="${NAME:-}"
 [ -n "$document_name" ] || die "NAME is required"
 
 case "$document_name" in
-  *[!A-Za-z0-9_-]*)
-    die "NAME must contain only letters, numbers, hyphens, and underscores"
+  /*|*/|*//* )
+    die "NAME must be a relative path under documents/"
+    ;;
+  *[!A-Za-z0-9_/-]*)
+    die "NAME must contain only letters, numbers, slashes, hyphens, and underscores"
     ;;
 esac
 
@@ -21,7 +24,7 @@ target_dir="$WORKSPACE_DIR/documents/$document_name"
 
 mkdir -p "$target_dir/chapters"
 
-document_title="$(printf '%s' "$document_name" | tr -- '-_' '  ')"
+document_title="$(basename "$document_name" | tr -- '-_' '  ')"
 
 cat <<EOF > "$target_dir/main.tex"
 \\documentclass[uplatex,dvipdfmx]{jsreport}

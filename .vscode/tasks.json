@@ -4,7 +4,7 @@
     {
       "id": "latexDocumentName",
       "type": "promptString",
-      "description": "Enter the new document directory name"
+      "description": "Enter the new document path under documents/"
     }
   ],
   "tasks": [

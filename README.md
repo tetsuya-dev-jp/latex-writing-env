@@ -46,11 +46,11 @@ CLI:
 make new NAME=my-paper
 ```
 
-上のコマンドを実行すると `documents/my-paper/` が作成されます。
+上のコマンドを実行すると `documents/my-paper/` が作成されます。`NAME=weekly/2026/2026-04-19` のような多層パスも使えます。
 
-生成された PDF は `build/<document-name>/` 配下に出力されます。
+生成された PDF は `build/<documents配下の相対パス>/` 配下に出力されます。例えば `documents/weekly/2026/2026-04-19/` は `build/weekly/2026/2026-04-19/` に出力されます。
 
-`make clean` は `build/` を丸ごと削除します。`make clean FILE=...` は対象文書の `build/<document-name>/` を削除します。
+`make clean` は `build/` を丸ごと削除します。`make clean FILE=...` は対象文書の出力ディレクトリだけを削除します。
 
 `make new` は固定の初期構成として `main.tex`、`chapters/introduction.tex`、`refs.bib` を生成します。
 
@@ -61,4 +61,4 @@ make new NAME=my-paper
 3. 必要なら `refs.bib` など関連ファイルを配置します。
 4. `make build FILE=...` で確認します。
 
-各文書プロジェクトのルートファイルは常に `main.tex` で、生成 PDF は `build/<document-name>/main.pdf` に出力されます。
+各文書プロジェクトのルートファイルは常に `main.tex` で、生成 PDF は `build/<documents配下の相対パス>/main.pdf` に出力されます。

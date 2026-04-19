@@ -7,7 +7,7 @@
       "command": "make",
       "args": [
         "-C",
-        "../..",
+        "%WORKSPACE_FOLDER%",
         "build",
         "FILE=%DOC%.tex"
       ]
@@ -26,7 +26,7 @@
   "latex-workshop.latex.clean.command": "make",
   "latex-workshop.latex.clean.args": [
     "-C",
-    "../..",
+    "%WORKSPACE_FOLDER%",
     "clean",
     "FILE=%DOC%.tex"
   ],
