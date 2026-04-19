@@ -31,4 +31,3 @@ doc_dir_relative="$(workspace_relative "$doc_dir")"
 
 printf 'DOC_DIR=%q\n' "$doc_dir_relative"
 printf 'ROOT=%q\n' 'main.tex'
-printf 'OUTPUT=%q\n' 'main.pdf'

@@ -12,7 +12,6 @@ out_dir_relative="$(document_build_dir "$DOC_DIR")"
 out_dir_absolute="$WORKSPACE_DIR/$out_dir_relative"
 root_pdf_name="${ROOT%.tex}.pdf"
 root_pdf_path="$out_dir_absolute/$root_pdf_name"
-output_pdf_path="$out_dir_absolute/$OUTPUT"
 
 mkdir -p "$out_dir_absolute"
 
@@ -30,8 +29,4 @@ docker_run_in "/workspace/$DOC_DIR" \
 
 [ -f "$root_pdf_path" ] || die "expected pdf was not generated: $root_pdf_path"
 
-if [ "$root_pdf_path" != "$output_pdf_path" ]; then
-  cp "$root_pdf_path" "$output_pdf_path"
-fi
-
-printf '%s\n' "$out_dir_relative/$OUTPUT"
+printf '%s\n' "$out_dir_relative/$root_pdf_name"
