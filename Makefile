@@ -1,7 +1,7 @@
 LATEX_IMAGE_NAME ?= latex-writing-env:local
 FILE ?=
 
-.PHONY: init doctor build lint format clean
+.PHONY: init doctor build format clean
 
 init:
 	docker build -t $(LATEX_IMAGE_NAME) -f tools/latex/Dockerfile .
@@ -11,9 +11,6 @@ doctor:
 
 build:
 	LATEX_IMAGE_NAME=$(LATEX_IMAGE_NAME) bash tools/latex/scripts/build.sh "$(FILE)"
-
-lint:
-	LATEX_IMAGE_NAME=$(LATEX_IMAGE_NAME) bash tools/latex/scripts/lint.sh "$(FILE)"
 
 format:
 	LATEX_IMAGE_NAME=$(LATEX_IMAGE_NAME) bash tools/latex/scripts/format.sh "$(FILE)"

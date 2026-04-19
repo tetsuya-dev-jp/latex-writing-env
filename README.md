@@ -2,7 +2,7 @@
 
 `WSL2 + Docker Engine + VSCode` で使う、日本語 LaTeX 執筆環境です。
 
-編集はホスト側の VSCode で行い、`build`、`lint`、`format` は Docker コンテナ内で実行します。
+編集はホスト側の VSCode で行い、`build` と `format` は Docker コンテナ内で実行します。
 
 ## 必要環境
 
@@ -21,7 +21,6 @@ make init
 ```bash
 make doctor
 make build FILE=documents/example-paper/main.tex
-make lint FILE=documents/example-paper/main.tex
 make format FILE=documents/example-paper/main.tex
 make clean
 make clean FILE=documents/example-paper/main.tex
@@ -30,7 +29,6 @@ make clean FILE=documents/example-paper/main.tex
 ## VSCode での使い方
 
 - 推奨拡張をインストールします。
-- `Tasks: Run Task` から `Build current document`、`Lint current document`、`Format current document` などを実行します。
 - `Ctrl+Alt+B` でも `LaTeX Workshop` からこのリポジトリの `make build` が呼ばれます。
 - 保存時の自動 format / build を使いたい場合は `Run On Save` 拡張を有効にします。
 - PDF は VSCode のタブ内でプレビューします。
