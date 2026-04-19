@@ -1,5 +1,4 @@
-/build/*
-!/build/.gitkeep
+/build/
 *.aux
 *.log
 *.fls

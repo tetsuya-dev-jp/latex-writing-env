@@ -50,6 +50,8 @@ make new NAME=my-paper
 
 生成された PDF は `build/documents/<document-name>/` 配下に出力されます。
 
+`make clean` は `build/` を丸ごと削除します。`make clean FILE=...` は対象文書の出力ディレクトリを削除します。
+
 `make new` は固定の初期構成として `main.tex`、`chapters/introduction.tex`、`refs.bib` を生成します。
 
 ## 既存ルールで手動追加する
