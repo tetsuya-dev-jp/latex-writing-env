@@ -20,12 +20,12 @@ make init
 
 ```bash
 make doctor
-make build FILE=documents/example-paper/thesis.tex
-make watch FILE=documents/example-paper/thesis.tex
-make lint FILE=documents/example-paper/thesis.tex
-make format FILE=documents/example-paper/thesis.tex
+make build FILE=documents/example-paper/main.tex
+make watch FILE=documents/example-paper/main.tex
+make lint FILE=documents/example-paper/main.tex
+make format FILE=documents/example-paper/main.tex
 make clean
-make clean FILE=documents/example-paper/thesis.tex
+make clean FILE=documents/example-paper/main.tex
 ```
 
 ## VSCode での使い方
@@ -43,47 +43,20 @@ make clean FILE=documents/example-paper/thesis.tex
 CLI:
 
 ```bash
-make new TEMPLATE=paper NAME=my-paper
+make new NAME=my-paper
 ```
 
 上のコマンドを実行すると `documents/my-paper/` が作成されます。
 
-現在選べるテンプレートは `paper` のみです。今後 `templates/` 配下にテンプレートを追加すれば、同じ導線で選べるようにできます。
-
 生成された PDF は `build/documents/<document-name>/` 配下に出力されます。
 
-## 新しいテンプレートを作成する
-
-1. `templates/` 配下に新しいテンプレートディレクトリを作ります。
-2. 既存の `templates/paper/` をコピーして土台にします。
-3. `document.json`、ルート `.tex`、章ファイル、`refs.bib` などを用途に合わせて編集します。
-4. `document.json` の `root` と `output` を正しく設定します。
-5. 文書名や PDF 名を生成時に差し替えたい場合は `@@DOC_NAME@@` と `@@DOC_TITLE@@` を使います。
-6. `.vscode/tasks.json` の `latexTemplate` の `options` に新しいテンプレート名を追加します。
-7. `make new TEMPLATE=<template-name> NAME=test-<template-name>` で生成確認します。
-8. `make build FILE=documents/test-<template-name>/thesis.tex` のようにビルド確認します。
-
-例:
-
-```bash
-cp -r templates/paper templates/weekly-report
-make new TEMPLATE=weekly-report NAME=weekly-2026-04-18
-make build FILE=documents/weekly-2026-04-18/thesis.tex
-```
+`make new` は固定の初期構成として `main.tex`、`chapters/introduction.tex`、`refs.bib` を生成します。
 
 ## 既存ルールで手動追加する
 
 1. `documents/` 配下に新しいディレクトリを作ります。
-2. `document.json` に `root` と `output` を書き、必要なら `bib` に文献ファイル配列を書きます。
-3. ルート `.tex` と必要な章ファイルを配置します。
+2. ルート `main.tex` と必要な章ファイルを配置します。
+3. 必要なら `refs.bib` など関連ファイルを配置します。
 4. `make build FILE=...` で確認します。
 
-`document.json` の例:
-
-```json
-{
-  "root": "thesis.tex",
-  "output": "thesis.pdf",
-  "bib": ["refs.bib"]
-}
-```
+各文書プロジェクトのルートファイルは常に `main.tex` で、生成 PDF は `build/documents/<document-name>/main.pdf` に出力されます。

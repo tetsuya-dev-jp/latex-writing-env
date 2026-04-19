@@ -34,57 +34,6 @@ workspace_relative() {
   esac
 }
 
-json_string_field() {
-  local json_file="$1"
-  local key="$2"
-  local json_file_relative
-
-  json_file_relative="$(workspace_relative "$(normalize_path "$json_file")")"
-
-  docker_run perl -MJSON::PP -e '
-    use strict;
-    use warnings;
-
-    my ($file, $key) = @ARGV;
-    open my $fh, q{<}, $file or die qq{cannot open $file: $!\n};
-    local $/;
-    my $data = decode_json(<$fh>);
-    my $value = $data->{$key};
-
-    exit 0 if !defined $value;
-    die qq{$key must be a string\n} if ref $value;
-
-    print $value;
-  ' "/workspace/$json_file_relative" "$key"
-}
-
-json_array_field() {
-  local json_file="$1"
-  local key="$2"
-  local json_file_relative
-
-  json_file_relative="$(workspace_relative "$(normalize_path "$json_file")")"
-
-  docker_run perl -MJSON::PP -e '
-    use strict;
-    use warnings;
-
-    my ($file, $key) = @ARGV;
-    open my $fh, q{<}, $file or die qq{cannot open $file: $!\n};
-    local $/;
-    my $data = decode_json(<$fh>);
-    my $value = $data->{$key};
-
-    exit 0 if !defined $value;
-    die qq{$key must be an array\n} if ref($value) ne q{ARRAY};
-
-    for my $entry (@{$value}) {
-      die qq{$key entries must be strings\n} if ref $entry;
-      print qq{$entry\n};
-    }
-  ' "/workspace/$json_file_relative" "$key"
-}
-
 docker_run() {
   docker run --rm \
     --user "$(id -u):$(id -g)" \

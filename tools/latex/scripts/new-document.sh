@@ -5,10 +5,8 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 # shellcheck source=common.sh
 source "$SCRIPT_DIR/common.sh"
 
-template_name="${TEMPLATE:-}"
 document_name="${NAME:-}"
 
-[ -n "$template_name" ] || die "TEMPLATE is required"
 [ -n "$document_name" ] || die "NAME is required"
 
 case "$document_name" in
@@ -17,23 +15,52 @@ case "$document_name" in
     ;;
 esac
 
-template_dir="$WORKSPACE_DIR/templates/$template_name"
 target_dir="$WORKSPACE_DIR/documents/$document_name"
 
-[ -d "$template_dir" ] || die "template not found: $template_name"
 [ ! -e "$target_dir" ] || die "document already exists: $document_name"
 
-mkdir -p "$target_dir"
-cp -R "$template_dir/." "$target_dir"
+mkdir -p "$target_dir/chapters"
 
 document_title="$(printf '%s' "$document_name" | tr -- '-_' '  ')"
 
-DOC_NAME="$document_name" DOC_TITLE="$document_title" \
-perl -0pi -e 's/\@\@DOC_NAME\@\@/$ENV{DOC_NAME}/g; s/\@\@DOC_TITLE\@\@/$ENV{DOC_TITLE}/g' \
-  "$target_dir/document.json" \
-  "$target_dir/thesis.tex"
+cat <<EOF > "$target_dir/main.tex"
+\\documentclass[uplatex,dvipdfmx]{jsreport}
 
-root_file="$(sed -n 's/.*"root"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' "$target_dir/document.json")"
-[ -n "$root_file" ] || die "root is missing in generated document.json"
+\\usepackage{graphicx}
+\\usepackage{booktabs}
 
-printf '%s\n' "documents/$document_name/$root_file"
+\\title{$document_title}
+\\author{Tetsuya}
+\\date{\\today}
+
+\\begin{document}
+
+\\maketitle
+\\tableofcontents
+
+\\input{chapters/introduction}
+
+\\bibliographystyle{jplain}
+\\bibliography{refs}
+
+\\end{document}
+EOF
+
+cat <<'EOF' > "$target_dir/chapters/introduction.tex"
+\chapter{Introduction}
+
+This document was created by latex-writing-env.
+
+It also includes a bibliography example~\cite{lamport1994latex}.
+EOF
+
+cat <<'EOF' > "$target_dir/refs.bib"
+@book{lamport1994latex,
+  author    = {Leslie Lamport},
+  title     = {LaTeX: A Document Preparation System},
+  year      = {1994},
+  publisher = {Addison-Wesley}
+}
+EOF
+
+printf '%s\n' "documents/$document_name/main.tex"

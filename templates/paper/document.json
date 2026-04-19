@@ -1,7 +1,0 @@
-{
-  "root": "thesis.tex",
-  "output": "@@DOC_NAME@@.pdf",
-  "bib": [
-    "refs.bib"
-  ]
-}

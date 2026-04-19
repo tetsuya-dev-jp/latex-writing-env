@@ -21,20 +21,14 @@ else
   doc_dir="$target_path"
 fi
 
-while [ "$doc_dir" != "$WORKSPACE_DIR" ] && [ ! -f "$doc_dir/document.json" ]; do
+while [ "$doc_dir" != "$workspace_documents" ] && [ ! -f "$doc_dir/main.tex" ]; do
   doc_dir="$(dirname "$doc_dir")"
 done
 
-[ -f "$doc_dir/document.json" ] || die "document.json not found"
-
-root_relative="$(json_string_field "$doc_dir/document.json" root)"
-output_relative="$(json_string_field "$doc_dir/document.json" output)"
-
-[ -n "$root_relative" ] || die "root is missing in document.json"
-[ -n "$output_relative" ] || die "output is missing in document.json"
+[ -f "$doc_dir/main.tex" ] || die "main.tex not found"
 
 doc_dir_relative="$(workspace_relative "$doc_dir")"
 
 printf 'DOC_DIR=%q\n' "$doc_dir_relative"
-printf 'ROOT=%q\n' "$root_relative"
-printf 'OUTPUT=%q\n' "$output_relative"
+printf 'ROOT=%q\n' 'main.tex'
+printf 'OUTPUT=%q\n' 'main.pdf'
