@@ -1,0 +1,9 @@
+{
+  "name": "latex-writing-env",
+  "private": true,
+  "devDependencies": {
+    "textlint": "14.8.4",
+    "textlint-plugin-latex2e": "1.2.1",
+    "textlint-rule-preset-ja-technical-writing": "12.0.2"
+  }
+}

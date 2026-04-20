@@ -1,0 +1,8 @@
+{
+  "plugins": [
+    "latex2e"
+  ],
+  "rules": {
+    "preset-ja-technical-writing": true
+  }
+}
