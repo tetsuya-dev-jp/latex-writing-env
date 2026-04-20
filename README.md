@@ -21,6 +21,7 @@ make init
 ```bash
 make build FILE=documents/example-paper/main.tex
 make lint FILE=documents/example-paper/main.tex
+make lint-fix FILE=documents/example-paper/main.tex
 make format FILE=documents/example-paper/main.tex
 make clean
 make clean FILE=documents/example-paper/main.tex
@@ -40,5 +41,6 @@ make clean FILE=documents/example-paper/main.tex
 3. 必要なら `refs.bib` など関連ファイルを配置します。
 4. `make build FILE=...` で確認します。
 5. 必要なら `make lint FILE=...` で `.tex` を明示的に確認します。
+6. 自動修正できるルールだけ直したいときは `make lint-fix FILE=...` を使います。
 
-各文書プロジェクトのルートファイルは常に `main.tex` です。生成 PDF は `build/<documents配下の相対パス>/main.pdf` に出力され、`make clean` は `build/` を丸ごと削除します。`make clean FILE=...` は対象文書の出力ディレクトリだけを削除します。`make lint` は `documents/` 配下の `.tex` ファイルだけを対象にし、自動では実行されません。
+各文書プロジェクトのルートファイルは常に `main.tex` です。生成 PDF は `build/<documents配下の相対パス>/main.pdf` に出力され、`make clean` は `build/` を丸ごと削除します。`make clean FILE=...` は対象文書の出力ディレクトリだけを削除します。`make lint` と `make lint-fix` は `documents/` 配下の `.tex` ファイルだけを対象にし、自動では実行されません。`make lint-fix` は `textlint` が自動修正可能な違反だけを更新します。
