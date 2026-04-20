@@ -19,4 +19,4 @@ format:
 	LATEX_IMAGE_NAME=$(LATEX_IMAGE_NAME) bash tools/latex/scripts/format.sh "$(FILE)"
 
 clean:
-	LATEX_IMAGE_NAME=$(LATEX_IMAGE_NAME) bash tools/latex/scripts/clean.sh "$(FILE)"
+	LATEX_IMAGE_NAME=$(LATEX_IMAGE_NAME) bash tools/latex/scripts/clean.sh
