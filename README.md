@@ -2,7 +2,7 @@
 
 `WSL2 + Docker Engine + VSCode` で使う、日本語 LaTeX 執筆環境です。
 
-編集はホスト側の VSCode で行い、`build` と `format` と `lint` は Docker コンテナ内で実行します。
+編集はホスト側の VSCode で行い、`build` と `format` と `lint` は Docker コンテナ内で実行します!
 
 ## 必要環境
 
