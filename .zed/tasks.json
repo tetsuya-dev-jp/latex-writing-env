@@ -1,0 +1,47 @@
+[
+  {
+    "label": "LaTeX: build and view current file",
+    "command": "make",
+    "args": ["-C", "$ZED_WORKTREE_ROOT", "view", "FILE=$ZED_FILE"],
+    "tags": ["latex-build"],
+    "save": "current",
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "hide": "never"
+  },
+  {
+    "label": "LaTeX: format current file",
+    "command": "make",
+    "args": ["-C", "$ZED_WORKTREE_ROOT", "format", "FILE=$ZED_FILE"],
+    "save": "current",
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "hide": "on_success"
+  },
+  {
+    "label": "LaTeX: lint current file",
+    "command": "make",
+    "args": ["-C", "$ZED_WORKTREE_ROOT", "lint", "FILE=$ZED_FILE"],
+    "save": "current",
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "hide": "never"
+  },
+  {
+    "label": "LaTeX: lint-fix current file",
+    "command": "make",
+    "args": ["-C", "$ZED_WORKTREE_ROOT", "lint-fix", "FILE=$ZED_FILE"],
+    "save": "current",
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "hide": "on_success"
+  },
+  {
+    "label": "LaTeX: clean build outputs",
+    "command": "make",
+    "args": ["-C", "$ZED_WORKTREE_ROOT", "clean"],
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "hide": "on_success"
+  }
+]

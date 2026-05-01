@@ -1,0 +1,18 @@
+{
+  "languages": {
+    "LaTeX": {
+      "soft_wrap": "editor_width"
+    }
+  },
+  "lsp": {
+    "texlab": {
+      "settings": {
+        "texlab": {
+          "build": {
+            "onSave": false
+          }
+        }
+      }
+    }
+  }
+}

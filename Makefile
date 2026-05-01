@@ -1,13 +1,17 @@
 LATEX_IMAGE_NAME ?= latex-writing-env:local
 FILE ?=
 
-.PHONY: init build lint lint-fix format clean
+.PHONY: init build view lint lint-fix format clean
 
 init:
 	docker build -t $(LATEX_IMAGE_NAME) -f docker/Dockerfile .
 
 build:
 	LATEX_IMAGE_NAME=$(LATEX_IMAGE_NAME) bash scripts/build.sh "$(FILE)"
+
+view:
+	LATEX_IMAGE_NAME=$(LATEX_IMAGE_NAME) bash scripts/build.sh "$(FILE)"
+	bash scripts/open-pdf.sh "$(FILE)"
 
 lint:
 	LATEX_IMAGE_NAME=$(LATEX_IMAGE_NAME) bash scripts/lint.sh "$(FILE)"

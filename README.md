@@ -20,6 +20,7 @@ make init
 
 ```bash
 make build FILE=documents/example-paper/main.tex
+make view FILE=documents/example-paper/main.tex
 make lint FILE=documents/example-paper/main.tex
 make lint-fix FILE=documents/example-paper/main.tex
 make format FILE=documents/example-paper/main.tex
@@ -32,6 +33,14 @@ make clean
 - `Ctrl+Alt+B` でも `LaTeX Workshop` からこのリポジトリの `make build` が呼ばれます。
 - 保存時の自動 format / build を使いたい場合は `Run On Save` 拡張を有効にします。
 - PDF は VSCode のタブ内でプレビューします。
+
+## Zed での使い方
+
+- Zed の `LaTeX` 拡張をインストールします。
+- Windows 側に SumatraPDF をインストールします。
+- `task: spawn` から `LaTeX: build and view current file` などのプロジェクトタスクを実行します。
+- タスクはこのリポジトリの `make view` / `make format` / `make lint` / `make lint-fix` / `make clean` を呼び出します。
+- Zed の LaTeX 拡張による直接ビルドは無効化し、Docker 経由の `make` に寄せています。
 
 ## 既存ルールで手動追加する
 
