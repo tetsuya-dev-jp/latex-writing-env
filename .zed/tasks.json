@@ -1,6 +1,6 @@
 [
   {
-    "label": "LaTeX: build and view current file",
+    "label": "LaTeX: build current file",
     "command": "make",
     "args": ["-C", "$ZED_WORKTREE_ROOT", "view", "FILE=$ZED_FILE"],
     "tags": ["latex-build"],

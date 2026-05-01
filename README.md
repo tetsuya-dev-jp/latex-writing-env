@@ -38,8 +38,9 @@ make clean
 
 - Zed の `LaTeX` 拡張をインストールします。
 - Windows 側に SumatraPDF をインストールします。
-- `task: spawn` から `LaTeX: build and view current file` などのプロジェクトタスクを実行します。
-- タスクはこのリポジトリの `make view` / `make format` / `make lint` / `make lint-fix` / `make clean` を呼び出します。
+- `task: spawn` から `LaTeX: build current file` などのプロジェクトタスクを実行します。
+- Zed の build タスクは `make view` を呼び出し、ビルド後に SumatraPDF で生成 PDF を表示します。
+- その他のタスクはこのリポジトリの `make format` / `make lint` / `make lint-fix` / `make clean` を呼び出します。
 - Zed の LaTeX 拡張による直接ビルドは無効化し、Docker 経由の `make` に寄せています。
 
 ## 既存ルールで手動追加する
