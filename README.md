@@ -2,7 +2,7 @@
 
 `WSL2 + Docker Engine + VSCode` で使う、日本語 LaTeX 執筆環境です。
 
-編集はホスト側の VSCode で行い、`build` と `format` と `lint` は Docker コンテナ内で実行します!
+編集はホスト側の VSCode で行い、`build` と `format` と `lint` は Docker コンテナ内で実行します。
 
 ## 必要環境
 
@@ -43,3 +43,14 @@ make clean
 6. 自動修正できるルールだけ直したいときは `make lint-fix FILE=...` を使います。
 
 各文書プロジェクトのルートファイルは常に `main.tex` です。生成 PDF は `build/<documents配下の相対パス>/main.pdf` に出力され、`make clean` は `build/` を丸ごと削除します。`make lint` と `make lint-fix` は `documents/` 配下の `.tex` ファイルだけを対象にし、自動では実行されません。`make lint-fix` は `textlint` が自動修正可能な違反だけを更新します。
+
+## ディレクトリ構成
+
+```
+.
+├── docker/           # Docker イメージ構築用
+├── scripts/          # ビルド・lint・format 用スクリプト
+├── config/           # textlint などの設定ファイル
+├── documents/        # LaTeX 文書プロジェクト
+└── .latexindent.yaml # latexindent 設定
+```

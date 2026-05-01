@@ -2,7 +2,7 @@
 set -euo pipefail
 
 LATEX_IMAGE_NAME="${LATEX_IMAGE_NAME:-latex-writing-env:local}"
-WORKSPACE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
+WORKSPACE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 die() {
   printf '%s\n' "$*" >&2

@@ -24,5 +24,5 @@ bash "$SCRIPT_DIR/resolve-root.sh" "$1" >/dev/null
 
 docker_run env NODE_PATH=/opt/textlint/node_modules \
   /opt/textlint/node_modules/.bin/textlint \
-  --config /workspace/.textlintrc.json \
+  --config /workspace/config/.textlintrc.json \
   "/workspace/$target_relative"

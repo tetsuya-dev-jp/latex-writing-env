@@ -2,7 +2,7 @@ FROM debian:bookworm-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-COPY package.json /opt/textlint/package.json
+COPY config/package.json /opt/textlint/package.json
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
