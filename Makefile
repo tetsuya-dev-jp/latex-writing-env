@@ -13,7 +13,7 @@ lint:
 	LATEX_IMAGE_NAME=$(LATEX_IMAGE_NAME) bash scripts/lint.sh "$(FILE)"
 
 lint-fix:
-	LATEX_IMAGE_NAME=$(LATEX_IMAGE_NAME) bash scripts/lint-fix.sh "$(FILE)"
+	LATEX_IMAGE_NAME=$(LATEX_IMAGE_NAME) bash scripts/lint.sh --fix "$(FILE)"
 
 format:
 	LATEX_IMAGE_NAME=$(LATEX_IMAGE_NAME) bash scripts/format.sh "$(FILE)"

@@ -7,6 +7,14 @@ source "$SCRIPT_DIR/common.sh"
 
 require_file_arg "$@"
 
+fix_args=()
+
+if [ "${1:-}" = "--fix" ]; then
+  fix_args=(--fix)
+  shift
+  require_file_arg "$@"
+fi
+
 target_path="$(normalize_path "$1")"
 target_relative="$(workspace_relative "$target_path")"
 
@@ -24,5 +32,6 @@ bash "$SCRIPT_DIR/resolve-root.sh" "$1" >/dev/null
 
 docker_run env NODE_PATH=/opt/textlint/node_modules \
   /opt/textlint/node_modules/.bin/textlint \
+  "${fix_args[@]}" \
   --config /workspace/config/.textlintrc.json \
   "/workspace/$target_relative"
