@@ -13,6 +13,6 @@ temp_relative="${target_relative}.format-tmp"
 
 rm -f "$WORKSPACE_DIR/$temp_relative"
 
-docker_run sh -lc "latexindent -g=/tmp/indent.log -l=/workspace/.latexindent.yaml \"/workspace/$target_relative\" > \"/workspace/$temp_relative\""
+docker_run sh -c "latexindent -g=/tmp/indent.log -l=/workspace/.latexindent.yaml \"/workspace/$target_relative\" > \"/workspace/$temp_relative\""
 
 mv "$WORKSPACE_DIR/$temp_relative" "$target_path"

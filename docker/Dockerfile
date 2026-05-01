@@ -1,8 +1,6 @@
-FROM debian:bookworm-slim
+FROM paperist/texlive-ja:debian
 
-ENV DEBIAN_FRONTEND=noninteractive
-
-COPY config/package.json /opt/textlint/package.json
+ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -10,22 +8,13 @@ RUN apt-get update \
         fonts-noto-cjk \
         libfile-homedir-perl \
         libyaml-tiny-perl \
-        latexmk \
-        make \
         nodejs \
         npm \
-        perl \
-        texlive-base \
-        texlive-bibtex-extra \
-        texlive-extra-utils \
-        texlive-fonts-recommended \
-        texlive-lang-japanese \
-        texlive-latex-extra \
-        texlive-latex-recommended \
-        texlive-pictures \
-    && cd /opt/textlint \
-    && npm install --omit=optional --no-fund --no-audit \
-    && kanji-config-updmap-sys --jis2004 haranoaji \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && tlmgr install latexindent
+
+COPY config/package.json /opt/textlint/package.json
+RUN cd /opt/textlint \
+    && npm install --omit=optional --no-fund --no-audit
 
 WORKDIR /workspace
